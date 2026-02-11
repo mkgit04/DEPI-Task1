@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'widgets/my_location_card.dart';
+
 class Page1 extends StatefulWidget {
   const Page1({super.key});
 
@@ -18,50 +20,7 @@ class _Page1State extends State<Page1> {
           child: Column(
             // spacing: 20,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset("assets/images/bell.png", width: 32, height: 32),
-                  Padding(
-                    padding: EdgeInsetsGeometry.all(20),
-                    child: Column(
-                      children: [
-                        Row(
-                          spacing: 5,
-                          children: [
-                            Text(
-                              "الموقع الحالي",
-                              style: GoogleFonts.notoKufiArabic(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15,
-                              ),
-                            ),
-                            Image.asset(
-                              "assets/images/arrow.png",
-                              width: 10.08,
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          "19 الشيخ احمد الصاوي ، مدينة نصر",
-                          style: GoogleFonts.notoKufiArabic(
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff515151),
-                            fontSize: 12,
-                          ),
-                          textDirection: TextDirection.rtl,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Image.asset(
-                    "assets/images/avatar.png",
-                    width: 60,
-                    height: 60,
-                  ),
-                ],
-              ),
+              MyLocationWiget(),
 
               Container(
                 width: double.infinity, // 350

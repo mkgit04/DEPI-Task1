@@ -14,6 +14,7 @@ class _Page2State extends State<Page2> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Material(
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -693,7 +694,8 @@ class _Page2State extends State<Page2> {
                 width: double.infinity,
                 height: 56.12,
                 decoration: BoxDecoration(
-                  color: Color(0XFFF55540),
+                  color: Color(0XFFfaaa9f),
+                  // color: Color(0XFFF55540),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -708,10 +710,19 @@ class _Page2State extends State<Page2> {
                             height: 30,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Color(0XFFFFE9D9),
+                              color: Color(0XFFfbc0b6),
+                              // color: Color(0XFFFFE9D9),
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Text("0"),
+                            child: Text(
+                              "0",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
                           Text(
                             "الإطلاع علي السلة",

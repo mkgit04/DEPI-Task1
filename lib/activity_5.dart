@@ -32,144 +32,150 @@ class _Activity5State extends State<Activity5> {
                     child: AppBar(),
                   ),
                   FoodSection(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "المجموع الفرعي",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        "2.00 ج.م",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "توصيل",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        "0.30 ج.م",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "المبلغ الإجمالي",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        "2.60 ج.م",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
-                  ),
+                  PricingSection(),
                 ],
               ),
             ),
             Spacer(),
-            Container(
-              width: double.infinity,
-              height: 133,
-              padding: EdgeInsets.only(
-                right: 15,
-                left: 15,
-                top: 10,
-                bottom: 30,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, 0.1),
-                    offset: Offset(0.0, -4), //(x,y)
-                    blurRadius: 9,
-                    spreadRadius: 0,
-                  ),
-                ],
-                // borderRadius: BorderRadius.circular(4),
-              ),
-              child: Column(
-                spacing: 10,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "الإجمالي:",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0XFFF55540),
-                        ),
-                      ),
-                      Text(
-                        "\$689.99",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0XFFF55540),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0XFFF55540),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 12,
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            "إتمام عملية الشراء",
-                            style: GoogleFonts.cairo(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            FooterSection(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PricingSection extends StatelessWidget {
+  const PricingSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 7,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "ملخص الدفع",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
             ),
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "المجموع الفرعي",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+            ),
+            Text(
+              "2.00 ج.م",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "توصيل",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+            ),
+            Text(
+              "0.30 ج.م",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "المبلغ الإجمالي",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+            ),
+            Text(
+              "2.60 ج.م",
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class FooterSection extends StatelessWidget {
+  const FooterSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 133,
+      padding: EdgeInsets.only(right: 15, left: 15, top: 10, bottom: 30),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.1),
+            offset: Offset(0.0, -4), //(x,y)
+            blurRadius: 9,
+            spreadRadius: 0,
+          ),
+        ],
+        // borderRadius: BorderRadius.circular(4),
+      ),
+      child: Column(
+        spacing: 10,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "الإجمالي:",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0XFFF55540),
+                ),
+              ),
+              Text(
+                "\$689.99",
+                style: GoogleFonts.montserrat(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0XFFF55540),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0XFFF55540),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "إتمام عملية الشراء",
+                    style: GoogleFonts.cairo(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

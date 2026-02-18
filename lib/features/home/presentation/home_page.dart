@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+import 'package:task1_flutter/features/activity_5/presentation/activity_5.dart';
+import 'package:task1_flutter/page1.dart';
+import 'package:task1_flutter/page2.dart';
+import 'package:task1_flutter/page3.dart';
+
+import '../../../activity_4.dart' show Activity4;
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  // Replace these asset paths with your actual image assets
+  // Make sure to declare them in pubspec.yaml under flutter > assets
+  final List<String> _tabImages = [
+    'assets/images/home.png',
+    'assets/images/heart.png',
+    'assets/images/bag-happy.png',
+    'assets/images/frame.png',
+  ];
+
+  final List<Widget> _pages = [Page1(), Page2(), Page3(), Activity4()];
+
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        body: IndexedStack(index: _selectedIndex, children: _pages),
+        floatingActionButton: CustomFAB(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 8.0,
+          color: Colors.white,
+          child: SizedBox(
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildTab(0),
+                _buildTab(1),
+                const SizedBox(width: 60),
+                _buildTab(2),
+                _buildTab(3),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTab(int index) {
+    final isSelected = _selectedIndex == index;
+
+    return GestureDetector(
+      onTap: () => setState(() => _selectedIndex = index),
+      behavior: HitTestBehavior.opaque,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            _tabImages[index],
+            width: 24,
+            height: 24,
+            colorBlendMode: BlendMode.srcIn,
+          ),
+          if (isSelected) const SizedBox(height: 5),
+          if (isSelected)
+            Container(
+              width: 12,
+              height: 2,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE94560),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(100),
+                  bottomLeft: Radius.circular(100),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFFFF8964),
+                    blurRadius: 16,
+                    spreadRadius: 2,
+                    offset: Offset(0, -12),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomFAB extends StatelessWidget {
+  const CustomFAB({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {},
+      backgroundColor: const Color(0xFFF55540),
+      shape: const CircleBorder(),
+      elevation: 8,
+      child: Image.asset(
+        "assets/images/shopping-cart.png",
+        width: 24,
+        height: 24,
+        colorBlendMode: BlendMode.srcIn,
+      ),
+    );
+  }
+}
+
+class _PageContent extends StatelessWidget {
+  final String title;
+  final Color color;
+
+  const _PageContent({required this.title, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      child: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 2,
+          ),
+        ),
+      ),
+    );
+  }
+}

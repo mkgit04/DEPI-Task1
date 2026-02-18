@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task1_flutter/activity_4.dart';
-import 'package:task1_flutter/activity_5.dart';
+import 'package:task1_flutter/activity_6.dart';
+import 'package:task1_flutter/features/activity_5/presentation/activity_5.dart';
+import 'package:task1_flutter/page1.dart';
 import 'package:task1_flutter/page2.dart';
 import 'package:task1_flutter/page3.dart';
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.notoKufiArabicTextTheme(),
       ),
-      home: const Activity5(),
+      home: const Activity6(),
     );
   }
 }

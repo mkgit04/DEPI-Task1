@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Activity6 extends StatelessWidget {
@@ -390,8 +391,8 @@ class BottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 105.5,
+      width: double.infinity.w,
+      height: 105.5.h,
       padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -409,47 +410,47 @@ class BottomSheet extends StatelessWidget {
         children: [
           Container(
             // margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(10),
             width: double.infinity,
             height: 48,
 
             decoration: BoxDecoration(
               color: Color(0XFFF55540),
               // color: Color(0XFFF55540),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: Row(
-                    spacing: 10,
+                    spacing: 10.sp,
                     children: [
                       Container(
-                        width: 30,
-                        height: 30,
+                        width: 29.w,
+                        height: 30.h,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Color(0XFFfbc0b6),
+                          color: Color.fromRGBO(255, 233, 217, 0.3),
                           // color: Color(0XFFFFE9D9),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(4.r),
                         ),
                         child: Text(
                           "1",
-                          style: TextStyle(
+                          style: GoogleFonts.cairo(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
 
-                            fontSize: 16,
+                            fontSize: 16.sp,
                           ),
                         ),
                       ),
                       Text(
-                        "إضفة إلى السلة",
+                        "إضافة إلى السلة",
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ],

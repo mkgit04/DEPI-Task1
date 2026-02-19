@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'widgets/my_location_card.dart';
@@ -190,212 +191,22 @@ class _Page1State extends State<Page1> {
               ),
               SizedBox(height: 12),
               Row(
+                spacing: 10,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    spacing: 3,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-
-                    children: [
-                      Container(
-                        width: 170,
-                        height: 109.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Color(0xffFEEEEC),
-                        ),
-                        child: Image.asset(
-                          "assets/images/burger.png",
-                          width: 170,
-                          height: 109.5,
-                        ),
-                      ),
-                      Text(
-                        "بج بيرجر سبايسي",
-                        style: GoogleFonts.notoKufiArabic(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 10,
-                        ),
-                      ),
-                      Row(
-                        spacing: 5,
-                        textDirection: TextDirection.rtl,
-                        children: [
-                          Image.asset(
-                            "assets/images/burger_vector.png",
-                            width: 13.95,
-                            height: 12.27,
-                          ),
-                          Text(
-                            "وجبات سريعة",
-                            style: GoogleFonts.notoKufiArabic(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 8,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        spacing: 75,
-                        textDirection: TextDirection.rtl,
-                        children: [
-                          Column(
-                            spacing: 5,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            // mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Row(
-                                spacing: 5,
-                                textDirection: TextDirection.rtl,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/star.png",
-                                    width: 13.95,
-                                    height: 12.27,
-                                  ),
-                                  Text(
-                                    "(+100) 5.0",
-                                    style: GoogleFonts.notoKufiArabic(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 8,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "150 ج.م",
-                                textDirection: TextDirection.rtl,
-                                style: GoogleFonts.notoKufiArabic(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 10,
-                                  color: Color(0xff868686),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            width: 36,
-                            height: 36,
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Color(0xffF55540),
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                              ),
-                            ),
-                            child: Image.asset(
-                              "assets/images/cart.png",
-                              width: 20,
-                              height: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Expanded(
+                    child: _FoodCard(
+                      image: "assets/images/burger.png",
+                      title: "بج بيرجر سبايسي",
+                      price: 150,
+                    ),
                   ),
-                  Column(
-                    spacing: 3,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-
-                    children: [
-                      Container(
-                        width: 170,
-                        height: 109.5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Color(0xffFEEEEC),
-                        ),
-                        child: Image.asset(
-                          "assets/images/seafood.png",
-                          width: 170,
-                          height: 109.5,
-                        ),
-                      ),
-                      Text(
-                        "بج بيرجر سبايسي",
-                        style: GoogleFonts.notoKufiArabic(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 10,
-                        ),
-                      ),
-                      Row(
-                        spacing: 5,
-                        textDirection: TextDirection.rtl,
-                        children: [
-                          Image.asset(
-                            "assets/images/burger_vector.png",
-                            width: 13.95,
-                            height: 12.27,
-                          ),
-                          Text(
-                            "وجبات سريعة",
-                            style: GoogleFonts.notoKufiArabic(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 8,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        spacing: 75,
-                        textDirection: TextDirection.rtl,
-                        children: [
-                          Column(
-                            spacing: 5,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            // mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Row(
-                                spacing: 5,
-                                textDirection: TextDirection.rtl,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/star.png",
-                                    width: 13.95,
-                                    height: 12.27,
-                                  ),
-                                  Text(
-                                    "(+100) 5.0",
-                                    style: GoogleFonts.notoKufiArabic(
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 8,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "150 ج.م",
-                                textDirection: TextDirection.rtl,
-                                style: GoogleFonts.notoKufiArabic(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 10,
-                                  color: Color(0xff868686),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            width: 36,
-                            height: 36,
-                            padding: EdgeInsets.all(8),
-
-                            decoration: BoxDecoration(
-                              color: Color(0xffF55540),
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(8),
-                                bottomLeft: Radius.circular(8),
-                              ),
-                            ),
-                            child: Image.asset(
-                              "assets/images/cart.png",
-                              width: 20,
-                              height: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Expanded(
+                    child: _FoodCard(
+                      image: "assets/images/seafood.png",
+                      title: "بج بيرجر سبايسي",
+                      price: 150,
+                    ),
                   ),
                 ],
               ),
@@ -403,6 +214,123 @@ class _Page1State extends State<Page1> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _FoodCard extends StatelessWidget {
+  final String title;
+  final double price;
+  final String image;
+
+  const _FoodCard({
+    // super.key,
+    required this.title,
+    required this.price,
+    required this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 3,
+      crossAxisAlignment: CrossAxisAlignment.start,
+
+      children: [
+        Container(
+          // width: 170,
+          height: 109.5.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.r),
+            color: Color(0xffFEEEEC),
+          ),
+          child: Image.asset(image, width: 170.w, height: 109.5.h),
+        ),
+        Text(
+          title,
+          style: GoogleFonts.notoKufiArabic(
+            fontWeight: FontWeight.w500,
+            fontSize: 10.sp,
+          ),
+        ),
+        Row(
+          spacing: 5.sp,
+          textDirection: TextDirection.rtl,
+          children: [
+            Image.asset(
+              "assets/images/burger_vector.png",
+              width: 13.95,
+              height: 12.27,
+            ),
+            Text(
+              "وجبات سريعة",
+              style: GoogleFonts.notoKufiArabic(
+                fontWeight: FontWeight.w400,
+                fontSize: 8.sp,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          // spacing: 75,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          textDirection: TextDirection.rtl,
+          children: [
+            Column(
+              spacing: 5.sp,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              // mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  spacing: 5.sp,
+                  textDirection: TextDirection.rtl,
+                  children: [
+                    Image.asset(
+                      "assets/images/star.png",
+                      width: 13.95.w,
+                      height: 12.27.h,
+                    ),
+                    Text(
+                      "(+100) 5.0",
+                      style: GoogleFonts.notoKufiArabic(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 8.sp,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "${price.truncate()} ج.م",
+                  textDirection: TextDirection.rtl,
+                  style: GoogleFonts.notoKufiArabic(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 10.sp,
+                    color: Color(0xff868686),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              width: 36.w,
+              height: 36.h,
+              padding: EdgeInsets.all(8),
+
+              decoration: BoxDecoration(
+                color: Color(0xffF55540),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(8),
+                  bottomLeft: Radius.circular(8),
+                ),
+              ),
+              child: Image.asset(
+                "assets/images/cart.png",
+                width: 20.w,
+                height: 20.h,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

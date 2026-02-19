@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task1_flutter/activity_4.dart';
 import 'package:task1_flutter/activity_6.dart';
@@ -18,15 +19,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-        scaffoldBackgroundColor: Colors.white,
-        textTheme: GoogleFonts.notoKufiArabicTextTheme(),
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      builder: (context, child) => MaterialApp(
+        // title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+          scaffoldBackgroundColor: Colors.white,
+          textTheme: GoogleFonts.notoKufiArabicTextTheme(),
+        ),
+        home: child,
       ),
-      home: const HomePage(),
+      child: HomePage(),
     );
   }
 }

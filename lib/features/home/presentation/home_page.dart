@@ -118,28 +118,3 @@ class CustomFAB extends StatelessWidget {
     );
   }
 }
-
-class _PageContent extends StatelessWidget {
-  final String title;
-  final Color color;
-
-  const _PageContent({required this.title, required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      child: Center(
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
-          ),
-        ),
-      ),
-    );
-  }
-}

@@ -3,7 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Activity6 extends StatelessWidget {
-  const Activity6({super.key});
+  final String image;
+  final String title;
+  final String price;
+  final BoxFit fit;
+  const Activity6({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.price,
+    required this.fit,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +25,7 @@ class Activity6 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              UpperSection(),
+              UpperSection(image: image, fit: fit),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
@@ -23,9 +33,9 @@ class Activity6 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "معكرونه بالصوص و قطع بانية حار",
+                      title,
                       style: GoogleFonts.cairo(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),
@@ -33,7 +43,7 @@ class Activity6 extends StatelessWidget {
                     Text(
                       "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.",
                       style: GoogleFonts.cairo(
-                        fontSize: 10,
+                        fontSize: 10.sp,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
@@ -42,9 +52,9 @@ class Activity6 extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "2.20 ج.م",
+                          "$price ج.م",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 15.sp,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -52,7 +62,7 @@ class Activity6 extends StatelessWidget {
                           height: 30,
                           padding: EdgeInsets.symmetric(horizontal: 8),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(4.r),
                             boxShadow: [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -68,20 +78,20 @@ class Activity6 extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.remove,
-                                size: 24,
+                                size: 24.sp,
                                 color: Color(0XFFD2B080),
                               ),
                               Text(
                                 "1",
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 13.sp,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black,
                                 ),
                               ),
                               Icon(
                                 Icons.add,
-                                size: 24,
+                                size: 24.sp,
                                 color: Color(0XFFF55540),
                               ),
                             ],
@@ -90,7 +100,7 @@ class Activity6 extends StatelessWidget {
                       ],
                     ),
                     Divider(
-                      height: 5,
+                      height: 5.h,
                       thickness: 5,
                       color: Color(0XFFD9D9D9).withAlpha(50),
                     ),
@@ -100,7 +110,7 @@ class Activity6 extends StatelessWidget {
                         Text(
                           "الحجم",
                           style: GoogleFonts.cairo(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
                           ),
@@ -110,12 +120,12 @@ class Activity6 extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                             color: Color(0XFFFFE9D9),
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(4.r),
                           ),
                           child: Text(
                             "إلزامي",
                             style: GoogleFonts.cairo(
-                              fontSize: 13,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w700,
                               color: Color(0XFFF55540),
                             ),
@@ -138,13 +148,13 @@ class Activity6 extends StatelessWidget {
                               ),
                               side: BorderSide(
                                 color: Color(0XFFD9D9D9),
-                                width: 1,
+                                width: 1.w,
                               ),
                             ),
                             Text(
                               "سنجل",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -153,7 +163,7 @@ class Activity6 extends StatelessWidget {
                             Text(
                               "0.50 د.ك",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -180,7 +190,7 @@ class Activity6 extends StatelessWidget {
                             Text(
                               "سنجل",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -189,7 +199,7 @@ class Activity6 extends StatelessWidget {
                             Text(
                               "0.50 د.ك",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -199,7 +209,7 @@ class Activity6 extends StatelessWidget {
                       ],
                     ),
                     Divider(
-                      height: 5,
+                      height: 5.h,
                       thickness: 5,
                       color: Color(0XFFD9D9D9).withAlpha(50),
                     ),
@@ -209,7 +219,7 @@ class Activity6 extends StatelessWidget {
                         Text(
                           "الإضافات",
                           style: GoogleFonts.cairo(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
                           ),
@@ -219,12 +229,12 @@ class Activity6 extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                             color: Color(0XFFFFE9D9),
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(4.r),
                           ),
                           child: Text(
                             "إختياري",
                             style: GoogleFonts.cairo(
-                              fontSize: 13,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w700,
                               color: Color(0XFFF55540),
                             ),
@@ -247,13 +257,13 @@ class Activity6 extends StatelessWidget {
                               ),
                               side: BorderSide(
                                 color: Color(0XFFD9D9D9),
-                                width: 1,
+                                width: 1.w,
                               ),
                             ),
                             Text(
                               "سلطة",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -262,7 +272,7 @@ class Activity6 extends StatelessWidget {
                             Text(
                               "0.00 د.ك",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -283,13 +293,13 @@ class Activity6 extends StatelessWidget {
                               ),
                               side: BorderSide(
                                 color: Color(0XFFD9D9D9),
-                                width: 1,
+                                width: 1.w,
                               ),
                             ),
                             Text(
                               "حار",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -298,7 +308,7 @@ class Activity6 extends StatelessWidget {
                             Text(
                               "0.00 د.ك",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -319,13 +329,13 @@ class Activity6 extends StatelessWidget {
                               ),
                               side: BorderSide(
                                 color: Color(0XFFD9D9D9),
-                                width: 1,
+                                width: 1.w,
                               ),
                             ),
                             Text(
                               "عادي",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -334,7 +344,7 @@ class Activity6 extends StatelessWidget {
                             Text(
                               "0.00 د.ك",
                               style: GoogleFonts.cairo(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -350,7 +360,7 @@ class Activity6 extends StatelessWidget {
                         Text(
                           "النوع",
                           style: GoogleFonts.cairo(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
                           ),
@@ -360,12 +370,12 @@ class Activity6 extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                             color: Color(0XFFFFE9D9),
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(4.r),
                           ),
                           child: Text(
                             "إلزامي",
                             style: GoogleFonts.cairo(
-                              fontSize: 13,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w700,
                               color: Color(0XFFF55540),
                             ),
@@ -474,7 +484,9 @@ class BottomSheet extends StatelessWidget {
 }
 
 class UpperSection extends StatelessWidget {
-  const UpperSection({super.key});
+  final String image;
+  final BoxFit fit;
+  const UpperSection({super.key, required this.image, required this.fit});
 
   @override
   Widget build(BuildContext context) {
@@ -482,9 +494,9 @@ class UpperSection extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 253,
+          height: 253.h,
           decoration: BoxDecoration(color: Color(0XFFFEEEEC)),
-          child: Image.asset("assets/images/chicken.png"),
+          child: Image.asset(image, fit: fit),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
@@ -492,26 +504,29 @@ class UpperSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             spacing: 5,
             children: [
-              Container(
-                width: 30,
-                height: 30,
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(horizontal: 9, vertical: 9),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0XFFF55540),
-                ),
-                child: Image.asset(
-                  "assets/images/back_arrow.png",
-                  width: 6,
-                  height: 12,
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                  width: 30.w,
+                  height: 30.h,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 9, vertical: 9),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0XFFF55540),
+                  ),
+                  child: Image.asset(
+                    "assets/images/back_arrow.png",
+                    width: 6.w,
+                    height: 12.h,
+                  ),
                 ),
               ),
 
               Image.asset(
                 "assets/images/notification.png",
-                width: 24,
-                height: 24,
+                width: 24.w,
+                height: 24.h,
               ),
             ],
           ),

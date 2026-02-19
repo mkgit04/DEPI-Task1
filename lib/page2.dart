@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task1_flutter/activity_6.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
@@ -232,100 +233,8 @@ class _Page2State extends State<Page2> {
                 ),
               ),
 
-              // GridItem(
-              //   image: gridItems[0]["image"]!,
-              //   title: gridItems[0]["title"]!,
-              //   price: gridItems[0]["price"]!,
-              // ),
               SizedBox(height: 10),
 
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20),
-              //   child: Row(
-              //     spacing: 10,
-              //     children: [
-              //       Expanded(
-              //         child: Column(
-              //           spacing: 3,
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-
-              //           children: [
-              //             Container(
-              //               width: double.maxFinite,
-              //               clipBehavior: Clip.antiAlias,
-              //               height: 109.5,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(8),
-              //                 color: Color(0xffFEEEEC),
-              //               ),
-              //               child: Image.asset(
-              //                 "assets/images/egg.png",
-              //                 width: 170,
-              //                 height: 109.5,
-              //                 fit: BoxFit.cover,
-              //               ),
-              //             ),
-              //             Text(
-              //               "معكرونه بالصوص و قطع بانية حار",
-              //               style: GoogleFonts.notoKufiArabic(
-              //                 fontWeight: FontWeight.w400,
-              //                 fontSize: 10,
-              //               ),
-              //             ),
-              //             Text(
-              //               "2.20 د.ك",
-              //               style: GoogleFonts.notoKufiArabic(
-              //                 fontWeight: FontWeight.w400,
-              //                 fontSize: 10,
-              //                 color: Color(0XFF868686),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //       Expanded(
-              //         child: Column(
-              //           spacing: 3,
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-
-              //           children: [
-              //             Container(
-              //               clipBehavior: Clip.antiAlias,
-              //               width: double.maxFinite,
-              //               height: 109.5,
-              //               decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(8),
-              //                 color: Color(0xffFEEEEC),
-              //               ),
-              //               child: Image.asset(
-              //                 "assets/images/pizza.png",
-              //                 width: 170,
-              //                 height: 109.5,
-              //                 fit: BoxFit.cover,
-              //               ),
-              //             ),
-              //             Text(
-              //               "معكرونه بالصوص و قطع بانية حار",
-              //               style: GoogleFonts.notoKufiArabic(
-              //                 fontWeight: FontWeight.w400,
-              //                 fontSize: 10,
-              //               ),
-              //             ),
-              //             Text(
-              //               "2.20 د.ك",
-              //               style: GoogleFonts.notoKufiArabic(
-              //                 fontWeight: FontWeight.w400,
-              //                 fontSize: 10,
-              //                 color: Color(0XFF868686),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 5,
@@ -522,38 +431,49 @@ class GridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // padding: const EdgeInsets.only(right: 10, left: 10, bottom: 0),
-    return Column(
-      spacing: 3,
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                Activity6(image: image, price: price, title: title, fit: fit),
+          ),
+        );
+      },
+      child: Column(
+        spacing: 3,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
 
-      children: [
-        Container(
-          width: double.maxFinite,
-          // height: 109.5,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: Color(0xffFEEEEC),
+        children: [
+          Container(
+            width: double.maxFinite,
+            // height: 109.5,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Color(0xffFEEEEC),
+            ),
+            child: Image.asset(image, width: 170, height: 109.5, fit: fit),
           ),
-          child: Image.asset(image, width: 170, height: 109.5, fit: fit),
-        ),
-        Text(
-          title,
-          style: GoogleFonts.notoKufiArabic(
-            fontWeight: FontWeight.w400,
-            fontSize: 10,
+          Text(
+            title,
+            style: GoogleFonts.notoKufiArabic(
+              fontWeight: FontWeight.w400,
+              fontSize: 10,
+            ),
           ),
-        ),
-        Text(
-          "$price د.ك",
-          style: GoogleFonts.notoKufiArabic(
-            fontWeight: FontWeight.w400,
-            fontSize: 10,
-            color: Color(0XFF868686),
+          Text(
+            "$price د.ك",
+            style: GoogleFonts.notoKufiArabic(
+              fontWeight: FontWeight.w400,
+              fontSize: 10,
+              color: Color(0XFF868686),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

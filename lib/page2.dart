@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:task1_flutter/activity_6.dart';
+import 'package:task1_flutter/features/product_details/presentation/product_details.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
@@ -437,7 +437,7 @@ class GridItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                Activity6(image: image, price: price, title: title, fit: fit),
+                ProductDetails(image: image, title: title, fit: fit),
           ),
         );
       },

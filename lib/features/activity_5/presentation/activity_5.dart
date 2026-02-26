@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:task1_flutter/features/activity_5/bloc/cart_bloc_controller.dart';
+import 'package:task1_flutter/features/activity_5/bloc/cart_bloc_event.dart';
 
 class Activity5 extends StatefulWidget {
   const Activity5({super.key});
@@ -142,7 +145,8 @@ class FooterSection extends StatelessWidget {
                 ),
               ),
               Text(
-                "\$689.99",
+                // "\$${(context.watch<CartCubit>().price * context.watch<CartCubit>().itemCounter).toStringAsFixed(2)}",
+                "\$${(context.watch<CartBlocController>().totalPrice).toStringAsFixed(2)}",
                 style: GoogleFonts.montserrat(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -247,16 +251,47 @@ class FoodSection extends StatelessWidget {
                     child: Row(
                       spacing: 16,
                       children: [
-                        Icon(Icons.remove, size: 24, color: Color(0XFFD2B080)),
+                        InkWell(
+                          // onTap: () => context.read<CartCubit>().removeItem(),
+                          onTap: () => context.read<CartBlocController>().add(
+                            CounterDecrement(),
+                          ),
+                          child: Icon(
+                            Icons.remove,
+                            size: 24,
+                            // color: context.read<CartCubit>().itemCounter == 0
+                            color:
+                                context
+                                        .read<CartBlocController>()
+                                        .itemCounter ==
+                                    0
+                                ? Color(0XFFD2B080)
+                                : Color(0XFFF55540),
+                          ),
+                        ),
                         Text(
-                          "1",
+                          // context.watch<CartCubit>().itemCounter.toString(),
+                          context
+                              .watch<CartBlocController>()
+                              .itemCounter
+                              .toString(),
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
                             color: Colors.black,
                           ),
                         ),
-                        Icon(Icons.add, size: 24, color: Color(0XFFF55540)),
+                        InkWell(
+                          // onTap: () => context.read<CartCubit>().addItem(),
+                          onTap: () => context.read<CartBlocController>().add(
+                            CounterIncrement(),
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            size: 24,
+                            color: Color(0XFFF55540),
+                          ),
+                        ),
                       ],
                     ),
                   ),

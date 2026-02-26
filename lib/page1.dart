@@ -311,8 +311,8 @@ class _FoodCard extends StatelessWidget {
               ],
             ),
             Container(
-              width: 36.w,
-              height: 36.h,
+              // width: 36.w,
+              // height: 36.h,
               padding: EdgeInsets.all(8),
 
               decoration: BoxDecoration(

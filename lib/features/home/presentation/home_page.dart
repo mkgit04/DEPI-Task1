@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task1_flutter/features/activity_5/presentation/activity_5.dart';
 import 'package:task1_flutter/page1.dart';
 import 'package:task1_flutter/page2.dart';
 import 'package:task1_flutter/page3.dart';
@@ -60,40 +59,47 @@ class _HomePageState extends State<HomePage> {
   Widget _buildTab(int index) {
     final isSelected = _selectedIndex == index;
 
-    return GestureDetector(
-      onTap: () => setState(() => _selectedIndex = index),
-      behavior: HitTestBehavior.opaque,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            _tabImages[index],
-            width: 24,
-            height: 24,
-            colorBlendMode: BlendMode.srcIn,
-          ),
-          if (isSelected) const SizedBox(height: 5),
-          if (isSelected)
-            Container(
-              width: 12,
-              height: 2,
-              decoration: BoxDecoration(
-                color: const Color(0xFFE94560),
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(100),
-                  bottomLeft: Radius.circular(100),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFFFF8964),
-                    blurRadius: 16,
-                    spreadRadius: 2,
-                    offset: Offset(0, -12),
-                  ),
-                ],
-              ),
+    return InkWell(
+      onTap: _selectedIndex == index
+          ? null
+          : () => setState(() => _selectedIndex = index),
+      borderRadius: BorderRadius.circular(50),
+
+      // behavior: HitTestBehavior.opaque,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              _tabImages[index],
+              width: 24,
+              height: 24,
+              colorBlendMode: BlendMode.srcIn,
             ),
-        ],
+            if (isSelected) const SizedBox(height: 5),
+            if (isSelected)
+              Container(
+                width: 12,
+                height: 2,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE94560),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(100),
+                    bottomLeft: Radius.circular(100),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFFF8964),
+                      blurRadius: 16,
+                      spreadRadius: 2,
+                      offset: Offset(0, -12),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

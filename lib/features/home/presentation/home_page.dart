@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task1_flutter/features/profile/presentation/profile_page.dart';
 import 'package:task1_flutter/page1.dart';
 import 'package:task1_flutter/page2.dart';
 import 'package:task1_flutter/page3.dart';
@@ -15,16 +16,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  // Replace these asset paths with your actual image assets
-  // Make sure to declare them in pubspec.yaml under flutter > assets
   final List<String> _tabImages = [
     'assets/images/home.png',
     'assets/images/heart.png',
     'assets/images/bag-happy.png',
     'assets/images/frame.png',
   ];
+  final List<String> _tabActiveImages = [
+    'assets/images/home-fill.png',
+    'assets/images/heart-fill.png',
+    'assets/images/bag-happy-fill.png',
+    'assets/images/profile_fill.png',
+  ];
 
-  final List<Widget> _pages = [Page1(), Page2(), Page3(), Activity4()];
+  final List<Widget> _pages = [Page1(), Page2(), Page3(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +77,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              _tabImages[index],
+              isSelected ? _tabActiveImages[index] : _tabImages[index],
               width: 24,
               height: 24,
               colorBlendMode: BlendMode.srcIn,

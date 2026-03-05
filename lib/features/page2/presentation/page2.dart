@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task1_flutter/core/db/sqldb.dart';
 import 'package:task1_flutter/features/product_details/presentation/product_details.dart';
+
+import '../../../core/data/grid_items.dart' show gridItems;
+import '../../../core/db/db_config.dart' show sqldb;
+import '../../favourites/cubit/favourites_cubit.dart' show FavouritesCubit;
+import '../../favourites/cubit/favourites_state.dart' show FavouritesState;
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
@@ -8,30 +15,6 @@ class Page2 extends StatefulWidget {
   @override
   State<Page2> createState() => _Page2State();
 }
-
-final List<Map<String, dynamic>> gridItems = [
-  {
-    "image": "assets/images/chicken.png",
-    "title": "معكرونه بالصوص و قطع بانية حار",
-    "price": "2.20",
-    "fit": BoxFit.contain,
-  },
-  {
-    "image": "assets/images/pasta.png",
-    "title": "معكرونه بالصوص و قطع بانية حار",
-    "price": "2.20",
-  },
-  {
-    "image": "assets/images/egg.png",
-    "title": "معكرونه بالصوص و قطع بانية حار",
-    "price": "2.20",
-  },
-  {
-    "image": "assets/images/pizza.png",
-    "title": "معكرونه بالصوص و قطع بانية حار",
-    "price": "2.20",
-  },
-];
 
 class _Page2State extends State<Page2> {
   @override
@@ -229,6 +212,7 @@ class _Page2State extends State<Page2> {
                     title: gridItems[index]["title"]!,
                     price: gridItems[index]["price"]!,
                     fit: gridItems[index]["fit"] ?? BoxFit.cover,
+                    index: index,
                   ),
                 ),
               ),
@@ -420,12 +404,14 @@ class GridItem extends StatelessWidget {
   final String title;
   final String price;
   final BoxFit fit;
+  final int index;
   const GridItem({
     super.key,
     required this.image,
     required this.title,
     required this.price,
     this.fit = BoxFit.cover,
+    required this.index,
   });
 
   @override
@@ -441,35 +427,80 @@ class GridItem extends StatelessWidget {
           ),
         );
       },
-      child: Column(
-        spacing: 3,
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-
+      child: Stack(
         children: [
-          Container(
-            width: double.maxFinite,
-            // height: 109.5,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Color(0xffFEEEEC),
-            ),
-            child: Image.asset(image, width: 170, height: 109.5, fit: fit),
+          Column(
+            spacing: 3,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Container(
+                width: double.maxFinite,
+                // height: 109.5,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Color(0xffFEEEEC),
+                ),
+                child: Image.asset(image, width: 170, height: 109.5, fit: fit),
+              ),
+              Text(
+                title,
+                style: GoogleFonts.notoKufiArabic(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 10,
+                ),
+              ),
+              Text(
+                "$price د.ك",
+                style: GoogleFonts.notoKufiArabic(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 10,
+                  color: Color(0XFF868686),
+                ),
+              ),
+            ],
           ),
-          Text(
-            title,
-            style: GoogleFonts.notoKufiArabic(
-              fontWeight: FontWeight.w400,
-              fontSize: 10,
-            ),
-          ),
-          Text(
-            "$price د.ك",
-            style: GoogleFonts.notoKufiArabic(
-              fontWeight: FontWeight.w400,
-              fontSize: 10,
-              color: Color(0XFF868686),
+          Positioned(
+            top: 5,
+            left: 5,
+            child: BlocBuilder<FavouritesCubit, FavouritesState>(
+              builder: (context, state) {
+                return FutureBuilder<bool>(
+                  future: context.read<FavouritesCubit>().isFavourite(index),
+                  builder: (context, asyncSnapshot) {
+                    final isFav = asyncSnapshot.data ?? false;
+
+                    return InkWell(
+                      onTap: () async {
+                        isFav
+                            ? context
+                                  .read<FavouritesCubit>()
+                                  .removeFromFavourite(index)
+                            : context.read<FavouritesCubit>().addToFavourite(
+                                index,
+                              );
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        width: 25,
+                        height: 25,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Image.asset(
+                          isFav
+                              ? "assets/images/heart-fill.png"
+                              : "assets/images/heart.png",
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ),
         ],

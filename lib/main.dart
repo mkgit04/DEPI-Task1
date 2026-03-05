@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart'
     show MultiBlocProvider, BlocProvider;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task1_flutter/features/favourites/cubit/favourites_cubit.dart';
 
 import 'package:task1_flutter/features/home/presentation/home_page.dart';
 import 'package:task1_flutter/features/product_details/cubit/product_cubit.dart';
@@ -17,6 +18,9 @@ void main() {
         BlocProvider<CartCubit>(create: (_) => CartCubit()),
         BlocProvider<CartBlocController>(create: (_) => CartBlocController()),
         BlocProvider<ProductCubit>(create: (_) => ProductCubit()),
+        BlocProvider<FavouritesCubit>(
+          create: (_) => FavouritesCubit()..getFavourites(),
+        ),
       ],
 
       child: MyApp(),

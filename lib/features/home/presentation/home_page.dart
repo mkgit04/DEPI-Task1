@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show ReadContext;
+import 'package:task1_flutter/features/favourites/cubit/favourites_cubit.dart';
+import 'package:task1_flutter/features/favourites/presentation/favourites_page.dart';
 import 'package:task1_flutter/features/profile/presentation/profile_page.dart';
 import 'package:task1_flutter/page1.dart';
-import 'package:task1_flutter/page2.dart';
+import 'package:task1_flutter/features/page2/presentation/page2.dart';
 import 'package:task1_flutter/page3.dart';
 
 import '../../../activity_4.dart' show Activity4;
@@ -29,13 +32,20 @@ class _HomePageState extends State<HomePage> {
     'assets/images/profile_fill.png',
   ];
 
-  final List<Widget> _pages = [Page1(), Page2(), Page3(), ProfilePage()];
+  final List<Widget> _pages = [
+    Page1(),
+    FavouritesPage(),
+    Page2(),
+    // Page3(),
+    ProfilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        extendBody: true,
         body: IndexedStack(index: _selectedIndex, children: _pages),
         floatingActionButton: CustomFAB(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

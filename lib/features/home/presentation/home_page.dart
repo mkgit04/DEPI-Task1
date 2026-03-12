@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show ReadContext;
+import 'package:task1_flutter/core/db/sqldb.dart';
 import 'package:task1_flutter/features/favourites/cubit/favourites_cubit.dart';
 import 'package:task1_flutter/features/favourites/presentation/favourites_page.dart';
 import 'package:task1_flutter/features/profile/presentation/profile_page.dart';
@@ -42,6 +43,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Sqldb sqldb = Sqldb();
+    // sqldb.deleteData("DELETE FROM favourites", []);
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(

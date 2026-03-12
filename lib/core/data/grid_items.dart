@@ -20,6 +20,6 @@ final List<Map<String, dynamic>> gridItems = [
   {
     "image": "assets/images/pizza.png",
     "title": "معكرونه بالصوص و قطع بانية حار",
-    "price": "10.00",
+    "price": "10.30",
   },
 ];

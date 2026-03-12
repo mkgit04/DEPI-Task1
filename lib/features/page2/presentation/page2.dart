@@ -255,7 +255,7 @@ class _Page2State extends State<Page2> {
 
               SizedBox(height: 4),
               LowerButton(),
-              SizedBox(height: 20),
+              SizedBox(height: 150),
             ],
           ),
         ),

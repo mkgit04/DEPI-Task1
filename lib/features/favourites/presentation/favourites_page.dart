@@ -84,6 +84,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                     //     price: 40.0,
                     //     onUnFavorite: () {},
                     //   ),
+                    SizedBox(height: 150),
                   ],
                 );
               },
@@ -160,7 +161,7 @@ class FavouriteCard extends StatelessWidget {
                   spacing: 13,
                   children: [
                     Text(
-                      "\$$price",
+                      "\$${double.parse(price.toString())}",
                       style: GoogleFonts.cairo(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w700,

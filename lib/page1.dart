@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart' show Dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
@@ -136,54 +138,98 @@ class _Page1State extends State<Page1> {
   }
 }
 
-class RecommendationWidget extends StatelessWidget {
+class RecommendationWidget extends StatefulWidget {
   const RecommendationWidget({
     super.key,
     required this.image,
     required this.title,
     required this.color,
+    this.duration = const Duration(milliseconds: 900),
+    this.verticalOffset = 6,
   });
   final String image;
   final String title;
   final Color color;
+  final Duration duration;
+  final double verticalOffset;
+
+  @override
+  State<RecommendationWidget> createState() => _RecommendationWidgetState();
+}
+
+class _RecommendationWidgetState extends State<RecommendationWidget>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _offsetAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final random = Random(DateTime.now().microsecondsSinceEpoch);
+
+    _controller = AnimationController(vsync: this, duration: widget.duration);
+    _offsetAnimation = Tween<double>(
+      begin: -widget.verticalOffset,
+      end: widget.verticalOffset,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+    _controller.value = random.nextDouble();
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BlocProvider(
-              create: (context) =>
-                  ProductsListCubit(api: DioConsumer(dio: Dio())),
-              child: ProductListPage(),
-            ),
-          ),
+    return AnimatedBuilder(
+      animation: _offsetAnimation,
+      builder: (context, child) {
+        return Transform.translate(
+          offset: Offset(0, _offsetAnimation.value),
+          child: child,
         );
       },
-      child: Column(
-        spacing: 3,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BlocProvider(
+                create: (context) =>
+                    ProductsListCubit(api: DioConsumer(dio: Dio())),
+                child: ProductListPage(),
+              ),
+            ),
+          );
+        },
+        child: Column(
+          spacing: 3,
 
-        children: [
-          Container(
-            width: 80,
-            height: 80,
-            padding: EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: color,
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              padding: EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: widget.color,
+              ),
+              child: Image.asset(widget.image, width: 72, height: 72),
             ),
-            child: Image.asset(image, width: 72, height: 72),
-          ),
-          Text(
-            title,
-            style: GoogleFonts.notoKufiArabic(
-              fontWeight: FontWeight.w500,
-              fontSize: 12,
+            Text(
+              widget.title,
+              style: GoogleFonts.notoKufiArabic(
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

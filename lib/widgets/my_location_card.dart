@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task1_flutter/widgets/animated_bell.dart';
 
 class MyLocationWiget extends StatelessWidget {
   const MyLocationWiget({super.key});
@@ -47,7 +48,7 @@ class MyLocationWiget extends StatelessWidget {
             ),
           ),
 
-          Image.asset("assets/images/bell.png", width: 32, height: 32),
+          AnimatedBell(),
         ],
       ),
     );

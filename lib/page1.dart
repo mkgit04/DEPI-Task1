@@ -1,7 +1,13 @@
+import 'package:dio/dio.dart' show Dio;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:task1_flutter/core/api/dio_consumer.dart';
+import 'package:task1_flutter/features/product_list/presentation/product_list_page.dart';
 
+import 'features/product_list/cubit/products_list_cubit.dart'
+    show ProductsListCubit;
 import 'widgets/my_location_card.dart';
 
 class Page1 extends StatefulWidget {
@@ -57,115 +63,26 @@ class _Page1State extends State<Page1> {
                 textDirection: TextDirection.rtl,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    spacing: 3,
-
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        padding: EdgeInsets.all(3),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Color(0xffF55540),
-                        ),
-                        child: Image.asset(
-                          "assets/images/burger.png",
-                          width: 72,
-                          height: 72,
-                        ),
-                      ),
-                      Text(
-                        "وجبات سريعة",
-                        style: GoogleFonts.notoKufiArabic(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                  RecommendationWidget(
+                    image: "assets/images/burger.png",
+                    title: "وجبات سريعة",
+                    color: Color(0xffF55540),
                   ),
-                  Column(
-                    spacing: 3,
 
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        padding: EdgeInsets.all(3),
-
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Color(0xffFCCAC4),
-                        ),
-                        child: Image.asset(
-                          "assets/images/chicken.png",
-                          width: 72,
-                          height: 72,
-                        ),
-                      ),
-                      Text(
-                        "مشويات",
-                        style: GoogleFonts.notoKufiArabic(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                  RecommendationWidget(
+                    image: "assets/images/chicken.png",
+                    title: "مشويات",
+                    color: Color(0xffFCCAC4),
                   ),
-                  Column(
-                    spacing: 3,
-
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        padding: EdgeInsets.all(3),
-
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Color(0xff00A991),
-                        ),
-                        child: Image.asset(
-                          "assets/images/seafood.png",
-                          width: 72,
-                          height: 72,
-                        ),
-                      ),
-                      Text(
-                        "مأكولات بحرية",
-                        style: GoogleFonts.notoKufiArabic(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                  RecommendationWidget(
+                    image: "assets/images/seafood.png",
+                    title: "مأكولات بحرية",
+                    color: Color(0xff00A991),
                   ),
-                  Column(
-                    spacing: 3,
-                    children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        padding: EdgeInsets.all(3),
-
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Color(0xffB0E4DD),
-                        ),
-                        child: Image.asset(
-                          "assets/images/meat.png",
-                          width: 72,
-                          height: 72,
-                        ),
-                      ),
-                      Text(
-                        "لحوم",
-                        style: GoogleFonts.notoKufiArabic(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                  RecommendationWidget(
+                    image: "assets/images/meat.png",
+                    title: "لحوم",
+                    color: Color(0xffB0E4DD),
                   ),
                 ],
               ),
@@ -214,6 +131,59 @@ class _Page1State extends State<Page1> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class RecommendationWidget extends StatelessWidget {
+  const RecommendationWidget({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.color,
+  });
+  final String image;
+  final String title;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BlocProvider(
+              create: (context) =>
+                  ProductsListCubit(api: DioConsumer(dio: Dio())),
+              child: ProductListPage(),
+            ),
+          ),
+        );
+      },
+      child: Column(
+        spacing: 3,
+
+        children: [
+          Container(
+            width: 80,
+            height: 80,
+            padding: EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: color,
+            ),
+            child: Image.asset(image, width: 72, height: 72),
+          ),
+          Text(
+            title,
+            style: GoogleFonts.notoKufiArabic(
+              fontWeight: FontWeight.w500,
+              fontSize: 12,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -6,45 +6,50 @@ class MyLocationWiget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset("assets/images/bell.png", width: 32, height: 32),
-        Padding(
-          padding: EdgeInsetsGeometry.all(20),
-          child: Column(
-            children: [
-              Row(
-                spacing: 5,
-                children: [
-                  Text(
-                    "الموقع الحالي",
-                    style: GoogleFonts.notoKufiArabic(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
+    return SizedBox(
+      // height: 100,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset("assets/images/avatar.png", width: 60, height: 60),
+
+          Padding(
+            padding: EdgeInsetsGeometry.all(20),
+            child: Column(
+              children: [
+                Row(
+                  spacing: 5,
+                  children: [
+                    Text(
+                      "الموقع الحالي",
+                      style: GoogleFonts.notoKufiArabic(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                      ),
                     ),
-                  ),
-                  Image.asset(
-                    "assets/images/arrow.png",
-                    width: 10.08,
-                    height: 10,
-                  ),
-                ],
-              ),
-              Text(
-                "19 الشيخ احمد الصاوي ، مدينة نصر",
-                style: GoogleFonts.notoKufiArabic(
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xff515151),
-                  fontSize: 12,
+                    Image.asset(
+                      "assets/images/arrow.png",
+                      width: 10.08,
+                      height: 10,
+                    ),
+                  ],
                 ),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
+                Text(
+                  "19 الشيخ احمد الصاوي ، مدينة نصر",
+                  style: GoogleFonts.notoKufiArabic(
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff515151),
+                    fontSize: 12,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+              ],
+            ),
           ),
-        ),
-        Image.asset("assets/images/avatar.png", width: 60, height: 60),
-      ],
+
+          Image.asset("assets/images/bell.png", width: 32, height: 32),
+        ],
+      ),
     );
   }
 }

@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart' show ReadContext;
-import 'package:task1_flutter/core/db/sqldb.dart';
-import 'package:task1_flutter/features/favourites/cubit/favourites_cubit.dart';
 import 'package:task1_flutter/features/favourites/presentation/favourites_page.dart';
 import 'package:task1_flutter/features/profile/presentation/profile_page.dart';
 import 'package:task1_flutter/page1.dart';
 import 'package:task1_flutter/features/page2/presentation/page2.dart';
-import 'package:task1_flutter/page3.dart';
-
-import '../../../activity_4.dart' show Activity4;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

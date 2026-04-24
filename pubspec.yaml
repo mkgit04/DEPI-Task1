@@ -33,12 +33,15 @@ dependencies:
   dio: ^5.9.2
   firebase_auth: ^6.3.0
   firebase_core: ^4.6.0
+  firebase_messaging: ^16.2.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_local_notifications: ^21.0.0
   flutter_screenutil: ^5.9.3
   google_fonts: ^8.0.0
   http: ^1.6.0
+  permission_handler: ^12.0.1
   provider: ^6.1.5+1
   sqflite: ^2.4.2
 

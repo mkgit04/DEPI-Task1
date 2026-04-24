@@ -2,11 +2,12 @@ import 'dart:math';
 
 import 'package:dio/dio.dart' show Dio;
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, ReadContext;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task1_flutter/core/api/dio_consumer.dart';
 import 'package:task1_flutter/features/product_list/presentation/product_list_page.dart';
+import 'package:task1_flutter/features/users/cubit/users_cubit.dart';
 
 import 'features/product_list/cubit/products_list_cubit.dart'
     show ProductsListCubit;
@@ -30,7 +31,12 @@ class _Page1State extends State<Page1> {
             // spacing: 20,
             children: [
               MyLocationWiget(),
-
+              ElevatedButton(
+                onPressed: () {
+                  context.read<UserCubit>().addUser();
+                },
+                child: Text("Add User"),
+              ),
               Container(
                 width: double.infinity, // 350
                 height: 45,

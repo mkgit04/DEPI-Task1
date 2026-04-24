@@ -1,8 +1,19 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:firebase_messaging/firebase_messaging.dart'
+    show FirebaseMessaging;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, ReadContext;
+import 'package:permission_handler/permission_handler.dart';
 import 'package:task1_flutter/features/favourites/presentation/favourites_page.dart';
 import 'package:task1_flutter/features/profile/presentation/profile_page.dart';
+import 'package:task1_flutter/features/users/presentation/users_page.dart';
 import 'package:task1_flutter/page1.dart';
 import 'package:task1_flutter/features/page2/presentation/page2.dart';
+
+import '../../splash/cubit/notification_service.dart' show NotificationService;
+import '../../users/cubit/users_cubit.dart' show UserCubit;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,6 +45,29 @@ class _HomePageState extends State<HomePage> {
     // Page3(),
     ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // notificationInit();
+    getFCMToken();
+  }
+
+  getFCMToken() async {
+    if (Platform.isIOS) {
+      await FirebaseMessaging.instance.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+      String? token = await FirebaseMessaging.instance.getAPNSToken();
+      log("FCM Token: $token");
+    } else {
+      await Permission.notification.request();
+      String? token = await FirebaseMessaging.instance.getToken();
+      log("FCM Token: $token");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +157,13 @@ class CustomFAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        context.read<UserCubit>().getUser();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => UsersPage()),
+        );
+      },
       backgroundColor: const Color(0xFFF55540),
       shape: const CircleBorder(),
       elevation: 8,
